@@ -1,0 +1,14 @@
+.errorPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    gap: 40px;
+
+    h3 {
+        display: flex;
+        align-items: center;
+    }
+}

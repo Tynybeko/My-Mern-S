@@ -1,0 +1,10 @@
+#posts {
+    height: 100%;
+    overflow: auto;
+
+    .main {
+        height: 100%;
+        height: fit-content;
+        padding: 10px 20px;
+    }
+}
