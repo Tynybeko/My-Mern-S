@@ -8,6 +8,7 @@ import '../Styles/Posts.scss'
 const Posts = function () {
     const [slice, setSlice] = useState(JSON.parse(sessionStorage.getItem('posts:count')) || 10)
     const { posts, users } = useSelector(state => state)
+    const [show, setShow] = useState(false)
     return (
         <div id='posts'>
             <FilterTools
@@ -20,8 +21,15 @@ const Posts = function () {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
                     {
                         posts.data && users.data ? posts.data.slice(0, slice).map(item => (
-                            <Grid item xs={6}>
-                                <Block state={item} users={users.data} />
+                            <Grid onClick={() => {
+                                setShow(prev => !prev)
+                            }} item xs={6}>
+                                <Block
+                                    show={show}
+                                    setShow={setShow}
+                                    key={item.id}
+                                    state={item}
+                                    users={users.data} />
                             </Grid>
                         ))
                             : 'LOADING'
