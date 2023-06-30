@@ -1,0 +1,38 @@
+center {
+    padding-top: 10%;
+}
+
+
+.confirmPage {
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    background-color: aliceblue;
+    border-radius: 25px;
+    padding: 10px;
+    gap: 20px;
+
+    h2 {
+        color: #FF5C00;
+    }
+
+    div {
+        display: flex;
+        gap: 10px;
+
+        button {
+            background-color: #FF5C00;
+
+            &:hover {
+                background-color: inherit;
+                color: #FF5C00;
+            }
+        }
+    }
+
+
+}

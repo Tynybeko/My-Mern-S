@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../Styles/PostBlock.scss'
 import { postMethods } from '../../Utils/redux/slices/posts';
 import { useDispatch } from 'react-redux';
-import { Checkbox, } from '@mui/material';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
-const Block = function ({ state, users, show, setShow }) {
-  const { postChecked, deleteChecked, postFavorite } = postMethods
-  const dispatch = useDispatch()
-  if (show) {
-    return (
-      <div className="modal">
+import { Checkbox } from '@mui/material';
+import { Favorite, FavoriteBorder, Tune } from '@mui/icons-material';
+import ConfirmPage from './ConfirmPage';
+import { Modal } from '@mui/material'
+import { List } from './List';
 
-          
-      </div>
-    )
-  }
+const Block = function ({ state, users }) {
+  const dispatch = useDispatch()
+  const { postChecked, updatePost, postFavorite, deletePost, postSingle } = postMethods
+  const [confirm, setConfirm] = useState(false)
+  const [singlePage, setSinglePage] = useState(state.single)
+  useEffect(() => {
+    state = state
+  }, [state])
+
   return (
     <div className='blocks'>
       <div className="title">
@@ -52,7 +54,45 @@ const Block = function ({ state, users, show, setShow }) {
       <div className="footer">
         <p>{state.body}</p>
       </div>
-    </div>
+      <Modal
+        className='modal'
+        open={confirm}
+        onClick={(event) => {
+          setConfirm(prev => !prev)
+        }}
+      >
+        <ConfirmPage
+          params={state.id}
+          setState={deletePost}
+          state={[confirm, setConfirm]}
+        />
+      </Modal>
+      <Modal
+        className='modal'
+        open={singlePage}
+        onClick={(event) => {
+          dispatch(postSingle({ state: true, id: state.id }))
+          setSinglePage(prev => !prev)
+        }}
+      >
+        <List
+          state={state}
+          users={users}
+          setState={setSinglePage} />
+      </Modal>
+      <div className="tools">
+        <button onClick={() => {
+          dispatch(postSingle({ state: true, id: state.id }))
+          setSinglePage(true)
+        }
+        }>Подробнее...</button>
+        <button
+          onClick={() => {
+            setConfirm(!confirm)
+          }}
+        >Удалить</button>
+      </div>
+    </div >
   )
 }
 export default Block

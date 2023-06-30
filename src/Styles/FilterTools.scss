@@ -1,14 +1,26 @@
 * {
-  user-select: none;  
+  user-select: none;
 }
 
 #filters {
-    width: 100%;
-    padding: 0px 10px;
+  width: 100%;
+  padding: 0px 10px;
 
-    .inner {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .midle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+
+    .left {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+  }
 }

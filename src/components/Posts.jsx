@@ -16,14 +16,13 @@ const Posts = function () {
                 slice={slice}
                 setSlice={setSlice}
                 item={'posts'}
+                data={posts.data ?? []}
             />
             <div className='main'>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
                     {
                         posts.data && users.data ? posts.data.slice(0, slice).map(item => (
-                            <Grid onClick={() => {
-                                setShow(prev => !prev)
-                            }} item xs={6}>
+                            <Grid item xs={6}>
                                 <Block
                                     show={show}
                                     setShow={setShow}
@@ -33,7 +32,6 @@ const Posts = function () {
                             </Grid>
                         ))
                             : 'LOADING'
-
                     }
                 </Grid>
             </div>

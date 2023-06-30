@@ -6,9 +6,11 @@
 .blocks {
     width: 100%;
     display: flex;
-    height: 120px;
+    height: 150px;
+    border-radius: 15px;
+    justify-content: space-between;
     flex-direction: column;
-    padding: 5px;
+    padding: 5px 5px 10px 5px;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
     .title {
@@ -33,6 +35,7 @@
     .footer {
         height: 30px;
         width: 100%;
+        padding: 0 5px;
 
         p {
             white-space: nowrap;
@@ -41,4 +44,34 @@
             text-overflow: ellipsis;
         }
     }
+
+    .tools {
+        display: flex;
+        gap: 10px;
+
+        button {
+            padding: 4px 10px;
+            background: #FF5C00;
+            color: white;
+            border: 1px solid #FF5C00;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                background-color: white;
+                color: #FF5C00;
+                transition: .2s ease-in-out;
+                border: 1px solid #FF5C00;
+            }
+        }
+    }
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.041);
+    position: absolute;
+    top: 0;
+    left: 0;
+
 }
