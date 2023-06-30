@@ -9,9 +9,10 @@ const Block = function ({ state, users, show, setShow }) {
   const dispatch = useDispatch()
   if (show) {
     return (
-      <React.Fragment>
+      <div className="modal">
 
-      </React.Fragment>
+          
+      </div>
     )
   }
   return (
